@@ -5,7 +5,7 @@ Utility functions to retrieve WordPress and plugin versions from WP.org, and 'te
 
 Useful for automated testing, build tools, plugin status dashboards, and more. Intended for use with Node.js — not in the browser.
 
-MIT licensed.
+ISC licensed.
 
 ## Installation
 
