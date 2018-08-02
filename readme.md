@@ -7,8 +7,6 @@ Utility functions to retrieve WordPress and plugin versions from WP.org, and 'te
 
 Useful for automated testing, build tools, plugin status dashboards, and more. Intended for use with Node.js — not in the browser.
 
-ISC licensed.
-
 ## Installation
 
 ~~~
@@ -25,7 +23,7 @@ This example calls `testWordPress()` and `testWooCommerce()` to:
 - Logs a message with the found version numbers.
 
 ~~~js
-const wptools = require("wptools");
+const wptools = require("@ndc/wptools");
 const path = require("path");
 
 const readmePath = path.join(__dirname, "/tests/samples/readme.txt");
@@ -51,7 +49,7 @@ wptools.plugin.testWooCommerce(pluginPath).then(result => {
 wptools also exposes these utility functions:
 
 ~~~js
-const wptools = require('wptools');
+const wptools = require("@ndc/wptools");
 
 wptools.wporg.getWPVersion().then(v => console.log(v));
 // => (Promise, resolves to string) The latest version of WordPress core from the WP.org API. e.g. '4.9.7'.
