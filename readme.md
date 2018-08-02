@@ -86,16 +86,21 @@ $ npm run coverage
 
 ## Linting
 
-TODO: ESLint plus Prettier. https://prettier.io/docs/en/eslint.html
+Linting uses ESLint to catch JS issues plus Prettier for auto-formatting. To auto-fix style:
 
-Why both? https://github.com/prettier/prettier-eslint/issues/101
-
-https://prettier.io/docs/en/why-prettier.html
-https://prettier.io/docs/en/comparison.html
+~~~
+$ npm run lint
+~~~
 
 ## Contributing
 
-Contributions are welcome. Please add unit tests for new or changed functionality.
+Contributions are welcome. To install dev dependencies:
+
+~~~
+$ npm install
+~~~
+
+Please add unit tests to the `*.test.js` files in `src` for new or changed functionality.
 
 ## Release History
 
