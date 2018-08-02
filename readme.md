@@ -60,7 +60,7 @@ wptools.wporg.getPluginVersion("plugin-slug").then(v => console.log(v));
 // => (Promise, resolves to string) The latest version of the given plugin from the WP.org API. e.g. '3.0.1'.
 
 wptools.plugin.getHeader("Tested up to", "/path/to/local/readme.txt");
-wpt.plugin.getHeader("WC tested up to", "/path/to/local/plugin.php");
+wptools.plugin.getHeader("WC tested up to", "/path/to/local/plugin.php");
 // => (string) The given header value from the specified plugin file.
 
 wptools.version.testedUpTo({ version: "4.5.3", tested: "4.5" });
