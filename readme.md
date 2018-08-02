@@ -10,7 +10,7 @@ ISC licensed.
 ## Installation
 
 ~~~
-$ npm install wptools --save
+$ npm install @ndc/wptools --save
 ~~~
 
 ## Usage

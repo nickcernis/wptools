@@ -1,5 +1,5 @@
 {
-  "name": "wptools",
+  "name": "@ndc/wptools",
   "version": "0.1.0",
   "description": "Tools for interacting with WordPress plugins and the WP.org API.",
   "main": "index.js",
