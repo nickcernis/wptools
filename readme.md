@@ -25,24 +25,24 @@ This example calls `testWordPress()` and `testWooCommerce()` to:
 - Logs a message with the found version numbers.
 
 ~~~js
-const wptools = require('wptools');
-const path = require('path');
+const wptools = require("wptools");
+const path = require("path");
 
-const readmePath = path.join(__dirname, '/tests/samples/readme.txt');
-const pluginPath = path.join(__dirname, '/tests/samples/plugin.php');
+const readmePath = path.join(__dirname, "/tests/samples/readme.txt");
+const pluginPath = path.join(__dirname, "/tests/samples/plugin.php");
 
 wptools.plugin.testWordPress(readmePath).then(result => {
-    console.log(
-      result.pass,
-      `WordPress is at ${result.version}, plugin is tested to ${result.tested}.`
-    );
+  console.log(
+    result.pass,
+    `WordPress is at ${result.version}, plugin is tested to ${result.tested}.`
+  );
 });
 
 wptools.plugin.testWooCommerce(pluginPath).then(result => {
-    console.log(
-      result.pass,
-      `WooCommerce is at ${result.version}, plugin is tested to ${result.tested}.`
-    );
+  console.log(
+    result.pass,
+    `WooCommerce is at ${result.version}, plugin is tested to ${result.tested}.`
+  );
 });
 ~~~
 
@@ -53,20 +53,20 @@ wptools also exposes these utility functions:
 ~~~js
 const wptools = require('wptools');
 
-wptools.wporg.getWPVersion().then(v=>console.log(v));
+wptools.wporg.getWPVersion().then(v => console.log(v));
 // => (Promise, resolves to string) The latest version of WordPress core from the WP.org API. e.g. '4.9.7'.
 
-wptools.wporg.getPluginVersion('plugin-slug').then(v=>console.log(v));
+wptools.wporg.getPluginVersion("plugin-slug").then(v => console.log(v));
 // => (Promise, resolves to string) The latest version of the given plugin from the WP.org API. e.g. '3.0.1'.
 
-wptools.plugin.getHeader('Tested up to','/path/to/local/readme.txt');
-wpt.plugin.getHeader('WC tested up to','/path/to/local/plugin.php');
+wptools.plugin.getHeader("Tested up to", "/path/to/local/readme.txt");
+wpt.plugin.getHeader("WC tested up to", "/path/to/local/plugin.php");
 // => (string) The given header value from the specified plugin file.
 
-wptools.version.testedUpTo({version:'4.5.3', tested:'4.5'});
+wptools.version.testedUpTo({ version: "4.5.3", tested: "4.5" });
 // => (bool) True if (tested major.minor) >= (version major.minor), and (tested _._.patch) >= (version _._patch) or (tested _._.patch) is omitted. Useful to check if a plugin is tested with the latest version of WordPress or WooCommerce.
 
-wptools.version.majorMinorPatch('4.9.1');
+wptools.version.majorMinorPatch("4.9.1");
 // => (object) {major: 4, minor: 9, patch: 1}
 ~~~
 
