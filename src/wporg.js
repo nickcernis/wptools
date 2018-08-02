@@ -6,7 +6,7 @@
  * @see https://codex.wordpress.org/WordPress.org_API
  */
 
-const axios = require('axios');
+const axios = require("axios");
 
 /**
  * Get current WordPress version from the WP.org API.
@@ -14,10 +14,11 @@ const axios = require('axios');
  * @returns {Promise} Resolves to the version number.
  */
 function getWPVersion() {
-    return axios.get('https://api.wordpress.org/core/version-check/1.7/')
-        .then(response => {
-            return response.data.offers[0].version;
-        });
+  return axios
+    .get("https://api.wordpress.org/core/version-check/1.7/")
+    .then(response => {
+      return response.data.offers[0].version;
+    });
 }
 
 /**
@@ -26,13 +27,14 @@ function getWPVersion() {
  * @returns {Promise} Resolves to the version number.
  */
 function getPluginVersion(pluginSlug) {
-    return axios.get(`https://api.wordpress.org/plugins/info/1.0/${pluginSlug}.json`)
-        .then(response => {
-            return response.data.version;
-        });
+  return axios
+    .get(`https://api.wordpress.org/plugins/info/1.0/${pluginSlug}.json`)
+    .then(response => {
+      return response.data.version;
+    });
 }
 
 module.exports = {
-    getWPVersion: getWPVersion,
-    getPluginVersion: getPluginVersion,
+  getWPVersion: getWPVersion,
+  getPluginVersion: getPluginVersion
 };

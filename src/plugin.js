@@ -5,8 +5,8 @@
  *
  * @module plugin
  */
-const v = require('./version.js');
-const wporg = require('./wporg.js');
+const v = require("./version.js");
+const wporg = require("./wporg.js");
 
 /**
  * Get provided header from a given file.
@@ -15,17 +15,17 @@ const wporg = require('./wporg.js');
  * @return {string|undefined} The header value if found.
  */
 function getHeader(headerText, filePath) {
-    const fs = require('fs');
+  const fs = require("fs");
 
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const regex = new RegExp('^' + headerText + ':(.*)$', 'mi');
-    const header = fileContents.match(regex);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const regex = new RegExp("^" + headerText + ":(.*)$", "mi");
+  const header = fileContents.match(regex);
 
-    if (header && header.length > 1) {
-        return header[1].trim();
-    }
+  if (header && header.length > 1) {
+    return header[1].trim();
+  }
 
-    console.log(`No '${headerText}' header found in ${filePath}.`);
+  console.log(`No '${headerText}' header found in ${filePath}.`);
 }
 
 /**
@@ -37,19 +37,22 @@ function getHeader(headerText, filePath) {
  * @return {Promise} Async, returns an object with pass, version, and tested.
  */
 function testWordPress(readmePath) {
-    const pluginTestedTo = getHeader('Tested up to', readmePath);
-    if (!pluginTestedTo) {
-        throw new Error(`Could not find 'Tested up to' in ${readmePath}.`);
-    }
+  const pluginTestedTo = getHeader("Tested up to", readmePath);
+  if (!pluginTestedTo) {
+    throw new Error(`Could not find 'Tested up to' in ${readmePath}.`);
+  }
 
-    return wporg.getWPVersion().then(latestWpVersion => {
-        const tested = v.testedUpTo({ version: latestWpVersion, tested: pluginTestedTo });
-        return {
-            pass: tested,
-            version: latestWpVersion,
-            tested: pluginTestedTo
-        };
+  return wporg.getWPVersion().then(latestWpVersion => {
+    const tested = v.testedUpTo({
+      version: latestWpVersion,
+      tested: pluginTestedTo
     });
+    return {
+      pass: tested,
+      version: latestWpVersion,
+      tested: pluginTestedTo
+    };
+  });
 }
 
 /**
@@ -61,25 +64,29 @@ function testWordPress(readmePath) {
  * @return {Promise} Async, returns an object with pass, version, and tested.
  */
 function testWooCommerce(pluginPath) {
-    const pluginTestedTo = getHeader('WC tested up to', pluginPath);
-    if (!pluginTestedTo) {
-        throw new Error(`Could not find 'WC tested up to' header in ${pluginPath}.`);
-    }
+  const pluginTestedTo = getHeader("WC tested up to", pluginPath);
+  if (!pluginTestedTo) {
+    throw new Error(
+      `Could not find 'WC tested up to' header in ${pluginPath}.`
+    );
+  }
 
-    return wporg.getPluginVersion('woocommerce').then(wooVersion => {
-        const tested = v.testedUpTo({ version: wooVersion, tested: pluginTestedTo });
-        // console.log(tested, `WooCommerce at ${version}, plugin is tested to Woo ${pluginTestedTo}.`);
-        return {
-            pass: tested,
-            version: wooVersion,
-            tested: pluginTestedTo
-        };
+  return wporg.getPluginVersion("woocommerce").then(wooVersion => {
+    const tested = v.testedUpTo({
+      version: wooVersion,
+      tested: pluginTestedTo
     });
+    // console.log(tested, `WooCommerce at ${version}, plugin is tested to Woo ${pluginTestedTo}.`);
+    return {
+      pass: tested,
+      version: wooVersion,
+      tested: pluginTestedTo
+    };
+  });
 }
 
-
 module.exports = {
-    getHeader: getHeader,
-    testWordPress: testWordPress,
-    testWooCommerce: testWooCommerce,
+  getHeader: getHeader,
+  testWordPress: testWordPress,
+  testWooCommerce: testWooCommerce
 };
