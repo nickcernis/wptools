@@ -1,6 +1,8 @@
 wptools
 =======
 
+![Travis (.org)](https://img.shields.io/travis/nickcernis/wptools.svg?style=for-the-badge) ![License](https://img.shields.io/github/license/nickcernis/wptools.svg?style=for-the-badge)
+
 Utility functions to retrieve WordPress and plugin versions from WP.org, and 'tested up to' headers from plugin files.
 
 Useful for automated testing, build tools, plugin status dashboards, and more. Intended for use with Node.js — not in the browser.
